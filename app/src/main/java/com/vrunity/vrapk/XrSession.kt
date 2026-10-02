@@ -88,7 +88,7 @@ class XrSession(private val activity: Activity) {
             if (dt > 0.1f) dt = 0.1f
             Xr.input(stick)
             steer(dt)
-            drawEyes(game)
+            drawEyes(game, dt)
             check(Xr.endFrame() >= 0) { "The headset rejected the VR frame." }
             submitted++
         }
@@ -159,7 +159,7 @@ class XrSession(private val activity: Activity) {
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0)
     }
 
-    private fun drawEyes(game: Game) {
+    private fun drawEyes(game: Game, dt: Float) {
         val w = Xr.eyeWidth()
         val h = Xr.eyeHeight()
         check(w > 0 && h > 0) { "The headset returned invalid eye dimensions." }

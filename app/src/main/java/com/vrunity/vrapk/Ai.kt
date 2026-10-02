@@ -229,7 +229,7 @@ class AiSystem(private val scene: Scene) {
         if (ai.roamPause > 0f) {
             ai.roamPause -= dt
             ai.sweep += dt
-            ai.face = ai.restFace + Math.sin(ai.sweep * 2.5) * 0.7f
+            ai.face = ai.restFace + Math.sin((ai.sweep * 2.5f).toDouble()).toFloat() * 0.7f
             place(ai)
             return
         }
